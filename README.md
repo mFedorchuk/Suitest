@@ -19,7 +19,7 @@ Suitest provides easy unit testing for JavaScript code
 .is();
 ```
 
-### Screenshot;
+### Screenshot
 
 ![Suitest](http://habrastorage.org/storage2/3da/9a6/450/3da9a6450bae8151d3f8e46034bcca9b.png "Suitest")
 
