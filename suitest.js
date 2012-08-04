@@ -199,6 +199,7 @@ var Suitest = function(__define__)
 				if (!name || typeof callback !== 'function')
 					throw new TypeError('Suitest.test ( name, callback, [, context ] );');
 
+				// Callbacks will be set as properties <test>
 				var data = {
 					name: name,
 					done: this.done,
@@ -212,14 +213,17 @@ var Suitest = function(__define__)
 				// Set context
 				__private__.log.context[name] = data;
 
-				// Apply callback
-				__global__.setTimeout(function()
+				var apply = function()
 				{
 					// Set start time
 					data.time = +new Date;
 					callback.call(this || context, data);
 				},
-				__private__.timeout);
+
+				timeout = __global__.setTimeout;
+
+				// Apply callback
+				timeout ? timeout(apply, __private__.timeout) : apply();
 
 				__private__.log.stack++;
 				__private__.log.total++;
