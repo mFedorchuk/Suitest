@@ -1,6 +1,6 @@
 # Suitest
 
-Suitest provides easy unit testing for JavaScript code
+Suitest is a powerful and easy-to-use JavaScript test suite
 
 * Very simple to use
 * Client-side and server-side (including NodeJS) support
