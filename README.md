@@ -98,6 +98,7 @@ unit.is(); // true
 ### .get ( name );
 
 *Outline function callback*
+
 ```javascript
 var set = function() {
 	return unit
