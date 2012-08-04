@@ -2,7 +2,7 @@
 
 /**
  * Suitest
- * Provides easy unit testing for JavaScript code
+ * Suitest is a powerful and easy-to-use JavaScript test suite
  * @author: Alexander Guinness
  * @version: 0.0.3
  * license: MIT
@@ -58,7 +58,7 @@ var Suitest = function(__define__)
 		 * Holds statistics
 		**/
 		log: {
-			time:   [],  // Elapsed time
+			time:   [], // Elapsed time
 			stack:  0,  // Temporary property to get final callback
 			total:  0,  // Total number of tests
 			status: 0,  // Temporary property to get a periodic test status
@@ -68,6 +68,7 @@ var Suitest = function(__define__)
 			context: {} // <get> { test : context },
 		},
 
+		// Callback timeout
 		timeout: 100,
 
 		/**
