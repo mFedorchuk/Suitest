@@ -45,7 +45,7 @@ https://github.com/monolithed/Suitest/downloads
 
 ### Screenshot
 
-![Suitest](http://habrastorage.org/storage2/525/143/7b8/5251437b857e11ad9a6d82bbbd427479.png "Suitest")
+![Suitest](http://habrastorage.org/storage2/355/f86/994/355f869942763e4f7239010e53284ebd.png "Suitest")
 
 ### .test ( name, callback, [, context ] );
 
