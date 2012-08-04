@@ -21,7 +21,7 @@ Suitest provides easy unit testing for JavaScript code
 
 ### Screenshot
 
-![Suitest](http://habrastorage.org/storage2/3da/9a6/450/3da9a6450bae8151d3f8e46034bcca9b.png "Suitest")
+![Suitest](http://habrastorage.org/storage2/525/143/7b8/5251437b857e11ad9a6d82bbbd427479.png "Suitest")
 
 ### .test ( name, callback, [, context ] );
 
