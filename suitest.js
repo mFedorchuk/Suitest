@@ -232,15 +232,18 @@ var Suitest = function(__define__)
 					}[operator || '=='];
 				}
 
-				__private__.log.params = length;
-
 				status = status ? 'passed' : 'failed';
 
-				// Set boolean test log
+				// Set <exec> arguments length
+				__private__.log.params = length;
+
+				// Set test status
 				__private__.log.status = status;
+
+				// Counting status
 				__private__.log[status]++;
 
-				// Set values
+				// Set <exec> values
 				__private__.data = [x, y];
 
 				return this;
