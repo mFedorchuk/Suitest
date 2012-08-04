@@ -11,7 +11,7 @@ Suitest is a powerful and easy-to-use JavaScript test suite
 * Fluent interface support (chaining)
 
 
-##Synopsis:
+##Synopsis
 
 
 *Add a test to run*
@@ -115,7 +115,7 @@ unit.exec(true, 1); // true, because default operation is ==
 unit.exec(true, 1, '==='); // false, because true and 1 are not equivalent
 ```
 
-### .done ( [ name ] );
+### .done ( [ callback ] );
 
 *Simple using:*
 
@@ -133,6 +133,12 @@ unit.test('test name', function(unit) {
 	}, 2000);
 });
 ```
+
+*With callback:*
+
+unit.done(function() {
+	//..
+});
 
 ### .text ( description );
 
@@ -197,7 +203,7 @@ unit.test('test', function(unit) {
 });
 ```
 
-## Chaining (Fluent interface)
+### Chaining (Fluent interface)
 
 
 ```javascript
