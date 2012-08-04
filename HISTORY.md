@@ -1,3 +1,8 @@
+# 0.0.3 / 2012-08-13
+
+* Getting total elapsed time
+* Added __private__.time
+
 # 0.0.2 / 2012-08-13
 
 * Added timer for <test> (fix for queue calls)
