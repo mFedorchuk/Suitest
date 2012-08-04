@@ -306,11 +306,10 @@ var Suitest = function(__define__)
 					values,
 
 					// Test status color
-					'\n     Status:   '        ,
-					__private__.log.status == 'passed' ? __private__.color('green') :
+					'\n     Status:   ', __private__.log.status == 'passed' ? __private__.color('green') :
 
 					// Test status ( passed | failed )
-					__private__.color('red'),    __private__.log.status, __private__.color('reset'), '\n\n'
+					__private__.color('red'), __private__.log.status, __private__.color('reset'), '\n\n'
 				);
 
 				var stop = __private__.stop;
