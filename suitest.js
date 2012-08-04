@@ -89,6 +89,12 @@ var Suitest = function(__define__)
 		**/
 		line: Array(64).join('-'),
 
+		/**
+		 * __private__.color
+		 * Getting ASCII codes for coloring output text
+		 * @param {String} color - color name
+		 * @return {String} Unicode unit
+		**/
 		color: function(color)
 		{
 			return '\u001b[' + {
