@@ -290,13 +290,26 @@ var Suitest = function(__define__)
 
 				// Display the extended statistics if the <exec> passed more than two parameters
 				if (__private__.log.params >= 2)
-					values = '\n     Expected: '  + data[0] + '\n     Actual:   ' + data[1];
+					values = '\n     Expected: '  + data[0] +
+						     '\n     Actual:   '  + data[1];
 
 				// Periodic reports
 				__private__.write
 				(
-					__private__.color('blue'), '<', name || this.name, '>', __private__.color('reset'), text, values,
-					'\n     Status:   '        , __private__.log.status == 'passed' ? __private__.color('green') :
+					// Test name
+					__private__.color('blue'), '<', name || this.name, '>', __private__.color('reset'),
+
+					// Test Description
+					text,
+
+					// Extended statistics ( Expected | Actual )
+					values,
+
+					// Test status color
+					'\n     Status:   '        ,
+					__private__.log.status == 'passed' ? __private__.color('green') :
+
+					// Test status ( passed | failed )
 					__private__.color('red'),    __private__.log.status, __private__.color('reset'), '\n\n'
 				);
 
@@ -307,10 +320,19 @@ var Suitest = function(__define__)
 				{
 					__private__.write
 					(
+						// Line
 						__private__.color('gray'), __private__.line, '\n',
+
+						// Total number of tests
 						' Total: ', __private__.log.total, ' tests, ',
+
+						// Total number of passed tests
 						__private__.log.passed, ' passed, ',
+
+						// Total number of failed tests
 						__private__.log.failed, ' failed', '\n',
+
+						// Line
 						__private__.line, __private__.color('reset'), '\n\nOk!\n'
 					);
 				}
