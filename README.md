@@ -199,7 +199,7 @@ var set = function() {
 };
 
 unit.test('test', function(unit) {
-	set.call(this); // true
+	set.call(unit); // true
 });
 ```
 
