@@ -1,13 +1,21 @@
 {
 	"author": "Alexander Guinness <monolithed@gmail.com> (https://github.com/monolithed)",
-	"name": "Suitest",
-	"description": "Provides easy unit testing for JavaScript code",
-	"keywords": ["unit-tests", "unit", "tests", "JavaScript", "testing", "TDD"],
+	"name": "suitest",
+	"title": "Suitest",
 	"version": "0.0.1",
-	"homepage": "https://github.com/monolithed/ECMAScript-6",
+	"description": "Provides easy unit testing for JavaScript code",
+	"keywords": ["unit", "tests", "unit tests", "testing", "javascript", "nodejs", "tdd"],
+	"homepage": "https://github.com/monolithed/Suitest",
 	"repository": {
 	"type": "git",
-	"url": "https://github.com/monolithed/ECMAScript-6"
+	"url": "git://github.com/monolithed/Suitest.git"
+	},
+	"bugs": {
+		"url": "https://github.com/monolithed/Suitest/issues"
+	},
+	"license": {
+	    "name": "MIT",
+	    "url": "http://www.opensource.org/licenses/mit-license.php"
 	},
 	"main": "./suitest.js",
 	"engines": {
