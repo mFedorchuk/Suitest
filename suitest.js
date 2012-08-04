@@ -100,8 +100,6 @@ var Suitest = function(__define__)
 				reset  : '[0m'
 			}[color];
 		}
-
-		//'[36m'
 	};
 
 	/** @constructor Suitest */
