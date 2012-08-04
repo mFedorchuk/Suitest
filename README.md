@@ -94,9 +94,9 @@ unit.exec(true, 1);
 unit.is(); // true
 ```
 
-### .get (); (Outline function callback)
+### .get ( name );
 
-*Outline callback*
+*Outline function callback*
 ```javascript
 var set = function() {
 	return unit

@@ -342,6 +342,7 @@ var Suitest = function(__define__)
 			/**
 			 * Suitest.stop
 			 * @public
+			 * @param {String} name
 			 * @return {Object} { test : context }
 			 *
 			 * @example:
