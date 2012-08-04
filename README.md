@@ -18,7 +18,7 @@ Suitest provides easy unit testing for JavaScript code
 .is();
 ```
 
-## .text( name, callback, [, context ] );
+### .text ( name, callback, [, context ] );
 
 ```javascript
 var unit = new Suitest;
@@ -29,7 +29,7 @@ unit.test('test name', function(unit) {
 });
 ```
 
-## .exec( x, [, y, context ] );
+### .exec ( x, [, y, context ] );
 
 
 *Using with one parameter:*
@@ -51,7 +51,7 @@ unit.exec(true, 1, '==='); // false, because true and 1 are not equivalent
 ```
 
 
-## .done( [ name ] );
+### .done ( [ name ] );
 
 *Simple using:*
 
@@ -71,14 +71,14 @@ unit.test('test name', function(unit) {
 ```
 
 
-## .stop();
+### .stop ();
 
 ```javascript
 unit.stop();
 ```
 
 
-## is
+### is()
 
 ```javascript
 unit.exec(true, 1);
