@@ -15,7 +15,7 @@ Suitest is a powerful and easy-to-use JavaScript test suite
 
 ```javascript
 .test ( name, callback, [, context ] );
-.exec ( x, [, y, context ] );
+.exec ( x, [, y, operator ] );
 .done ( [ name ] );
 .text ( description );
 .get ( name );
