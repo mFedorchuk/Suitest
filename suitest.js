@@ -86,7 +86,21 @@ var Suitest = function(__define__)
 		 * Dashed lines generator
 		 * @return {void}
 		**/
-		line: Array(64).join('-')
+		line: Array(64).join('-'),
+
+		color: function(color)
+		{
+			return '\u001b' + {
+				red    : '[31m',
+				blue   : '[36m',
+				green  : '[32m',
+				yellow : '[33m',
+				gray   : '[37m',
+				reset  : '[0m'
+			}[color];
+		}
+
+		//'[36m'
 	};
 
 	/** @constructor Suitest */
@@ -100,7 +114,7 @@ var Suitest = function(__define__)
 		// Display headlines
 		__private__.write
 		(
-			'\n', __private__.line, '\n ',
+			'\n', __private__.color('gray'), __private__.line, '\n ',
 
 			// Title
 			info.title,
@@ -117,7 +131,7 @@ var Suitest = function(__define__)
 			// Release year
 			info.year, '\n',
 
-			__private__.line, '\n'
+			__private__.line, __private__.color('reset'), '\n'
 		);
 
 		__private__.define.call(Suitest.prototype, {
@@ -260,16 +274,15 @@ var Suitest = function(__define__)
 					text = '\n     Description: ' + text;
 
 				// Display the extended statistics if the <exec> passed more than two parameters
-				if (__private__.log.params >= 2) {
-					values = '\n     Expected: '  + data[0] +
-					'\n     Actual:   ' + data[1];
-				}
+				if (__private__.log.params >= 2)
+					values = '\n     Expected: '  + data[0] + '\n     Actual:   ' + data[1];
 
 				// Periodic reports
 				__private__.write
 				(
-					'<', name || this.name, '>', text, values,
-					'\n     Status:   '        , __private__.log.status, '\n\n'
+					__private__.color('blue'), '<', name || this.name, '>', __private__.color('reset'), text, values,
+					'\n     Status:   '        , __private__.log.status == 'passed' ? __private__.color('green') :
+					__private__.color('red'),    __private__.log.status, __private__.color('reset'), '\n\n'
 				);
 
 				var stop = __private__.stop;
@@ -279,11 +292,11 @@ var Suitest = function(__define__)
 				{
 					__private__.write
 					(
-						__private__.line, '\n',
+						__private__.color('gray'), __private__.line, '\n',
 						' Total: ', __private__.log.total, ' tests, ',
 						__private__.log.passed, ' passed, ',
 						__private__.log.failed, ' failed', '\n',
-						__private__.line, '\n\nOk!\n'
+						__private__.line, __private__.color('reset'), '\n\nOk!\n'
 					);
 				}
 
@@ -367,5 +380,5 @@ var Suitest = function(__define__)
 
 }(Object.defineProperty);
 
-
-//module.exports = Suitest;
+// NodeJS support
+try { module.exports = Suitest; } catch(error) {}
