@@ -177,6 +177,7 @@ var Suitest = function(__define__)
 		__private__.define.call(Suitest.prototype, {
 			/**
 			 * Suitest.test
+			 * Add a test to run
 			 * @public
 			 * @param {*} name - Test name
 			 * @param {Function} callback
@@ -228,6 +229,7 @@ var Suitest = function(__define__)
 
 			/**
 			 * Suitest.exec
+			 * A comparison assertion
 			 * @public
 			 * @param {*} x - First operand
 			 * @param {*} y - Second operand
@@ -298,6 +300,7 @@ var Suitest = function(__define__)
 
 			/**
 			 * Suitest.done
+			 * Register a callback to fix test result
 			 * @public
 			 * @param {*} [ name ] - Test name
 			 * @return {Object} this
@@ -402,6 +405,7 @@ var Suitest = function(__define__)
 
 			/**
 			 * Suitest.stop
+			 * Throws an exception when test run and stop all next tests
 			 * @public
 			 * @return {Object} this
 			 *
@@ -420,6 +424,7 @@ var Suitest = function(__define__)
 
 			/**
 			 * Suitest.stop
+			 * Register outline function callbacks
 			 * @public
 			 * @param {String} name
 			 * @return {Object} { test : context }
@@ -456,6 +461,7 @@ var Suitest = function(__define__)
 
 			/**
 			 * Suitest.is
+			 * A boolean assertion
 			 * @public
 			 * @return {Boolean}
 			 *
@@ -481,6 +487,7 @@ var Suitest = function(__define__)
 
 			/**
 			 * Suitest.text
+			 * Add test description
 			 * @public
 			 * @param {String} text - Test description
 			 * @return {Object} this
