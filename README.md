@@ -56,7 +56,7 @@ Suitest is a powerful and easy-to-use JavaScript test suite
 .is ();
 ```
 
-### Installation
+## Installation
 
 *npm*
 
@@ -77,9 +77,12 @@ https://github.com/monolithed/Suitest/downloads
 ```
 
 
-### Screenshot
+## Screenshot
 
 ![Suitest](http://habrastorage.org/storage2/355/f86/994/355f869942763e4f7239010e53284ebd.png "Suitest")
+
+## API
+
 
 ### .test ( name, callback, [, context ] );
 
