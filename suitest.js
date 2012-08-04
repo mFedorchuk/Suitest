@@ -316,12 +316,8 @@ var Suitest = function(__define__)
 					__private__.color('red'), __private__.log.status, __private__.color('reset'), '\n\n'
 				);
 
-				var stop = __private__.stop;
-
-				console.log(__private__.log.stack)
-
 				// Total statistics
-				if (--__private__.log.stack === 0 || stop)
+				if (--__private__.log.stack === 0 || __private__.stop)
 				{
 					__private__.write
 					(
@@ -349,7 +345,7 @@ var Suitest = function(__define__)
 				__private__.data = [];
 
 				// Stop all tests
-				if (stop)
+				if (__private__.stop)
 					throw new Error('Stopped test execution!');
 
 				return this;
