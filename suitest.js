@@ -18,7 +18,7 @@ var Suitest = function(__define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.1',
+			version: '0.0.2',
 			license: 'MIT',
 			year:    2012
 		},
