@@ -34,11 +34,24 @@ unit.test('test 4', function(unit)
 	}, 1000);
 });
 
-// test 4
+// test 5
 unit.test('test 5', function(unit)
 {
 	setTimeout(function() {
 		unit.exec(1.1 | 0, 1); // true
 		unit.done();
 	}, 4000);
+});
+
+
+var set = function() {
+	return unit
+		.get('test 6')
+		.exec(true, 1)
+		.done();
+};
+
+// test 6
+unit.test('test 6', function(unit) {
+	set(); // true
 });

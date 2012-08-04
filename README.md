@@ -16,6 +16,7 @@ Suitest provides easy unit testing for JavaScript code
 .done( [ name ] );
 .text( description );
 .stop();
+.get();
 .is();
 ```
 
@@ -36,7 +37,6 @@ unit.test('test name', function(unit) {
 
 ### .exec ( x, [, y, context ] );
 
-
 *Using with one parameter:*
 
 ```javascript
@@ -54,7 +54,6 @@ unit.exec(true, 1); // true, because default operation is ==
 ```javascript
 unit.exec(true, 1, '==='); // false, because true and 1 are not equivalent
 ```
-
 
 ### .done ( [ name ] );
 
@@ -87,7 +86,6 @@ unit.text('Test description');
 unit.stop();
 ```
 
-
 ### is()
 
 ```javascript
@@ -95,6 +93,45 @@ unit.exec(true, 1);
 unit.is(); // true
 ```
 
+### .get ();
+
+*Callback*
+```javascript
+var set = function() {
+	return unit
+		.get('test 6')
+		.exec(true, 1)
+		.done();
+};
+
+*Simple using*
+```javascript
+unit.test('test', function(unit) {
+	set(); // true
+});
+```
+
+*Using with asynchronous code*
+```javascript
+unit.test('test', function(unit) {
+	setTimeout(set, 2000); // true
+});
+```
+
+*Function.prototype.bind / Function.prototype.call* <br />
+Also you can use it without \<get\> method (but this not recommended):
+
+```javascript
+var set = function() {
+	return this
+		.exec(true, 1)
+		.done();
+};
+
+unit.test('test', function(unit) {
+	set.call(this); // true
+});
+```
 
 ## Chaining (Fluent interface)
 

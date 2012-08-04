@@ -58,12 +58,13 @@ var Suitest = function(__define__)
 		 * Holds statistics
 		**/
 		log: {
-			stack:  0, // Temporary property to get final callback
-			total:  0, // Total number of tests
-			status: 0, // Temporary property to get a periodic test status
-			failed: 0, // Total number of failed tests
-			passed: 0, // Total number of passed tests
-			params: 0  // The <exec> parameters
+			stack:  0,  // Temporary property to get final callback
+			total:  0,  // Total number of tests
+			status: 0,  // Temporary property to get a periodic test status
+			failed: 0,  // Total number of failed tests
+			passed: 0,  // Total number of passed tests
+			params: 0,  // The <exec> parameters,
+			context: {} // <get> { test : context }
 		},
 
 		/**
@@ -158,14 +159,21 @@ var Suitest = function(__define__)
 				if (!name || typeof callback !== 'function')
 					throw new TypeError('Suitest.test ( name, callback, [, context ] );');
 
-				callback.call(this || context, {
+				var data = {
 					name: name,
 					done: this.done,
 					exec: this.exec,
 					text: this.text,
 					stop: this.stop,
+					get:  this.get,
 					is:   this.is
-				});
+				};
+
+				// Set context
+				__private__.log.context[name] = data;
+
+				// Apply callback
+				callback.call(this || context, data);
 
 				__private__.log.stack++;
 				__private__.log.total++;
@@ -329,6 +337,41 @@ var Suitest = function(__define__)
 				__private__.stop = true;
 
 				return this;
+			},
+
+			/**
+			 * Suitest.stop
+			 * @public
+			 * @return {Object} { test : context }
+			 *
+			 * @example:
+			 *
+			 * // Simple using
+			 * var set = function() {
+			 *     return unit
+			 *        .get('test')
+			 *        .exec(true, 1)
+			 *        .done();
+			 * };
+			 *
+			 * unit.test('test', function(unit) {
+			 *    set(); // true
+			 * });
+			 *
+			 * // Using with asynchronous code
+			 * var set = function() {
+			 *     return unit
+			 *        .get('test')
+			 *        .exec(true, 1)
+			 *        .done();
+			 * };
+			 *
+			 * unit.test('test', function(unit) {
+			 *    setTimeout(set, 2000); // true
+			 * });
+			**/
+			get: function(name) {
+				return __private__.log.context[name];
 			},
 
 			/**
