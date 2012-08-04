@@ -203,6 +203,49 @@ unit.test('test', function(unit) {
 });
 ```
 
+### Context
+
+*There're several ways to set the calling context* <br />
+
+*this*
+
+```javascript
+unit.test('test', function() {
+	this.exec(true).done();
+});
+```
+
+*.test()'s parameter*
+
+```javascript
+unit.test('test', function(context) {
+	context.exec(true).done();
+});
+```
+
+*.get()*
+
+```javascript
+var set = function() {
+	return unit.get('test').exec(true).done();
+};
+
+unit.test('test', set);
+```
+
+*.call/apply/bind()*
+
+```javascript
+var set = function() {
+	return unit.get('test').exec(true).done();
+};
+
+unit.test('test', function() {
+	set.call(this);
+});
+```
+
+
 ### Chaining (Fluent interface)
 
 
