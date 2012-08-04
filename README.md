@@ -11,14 +11,15 @@ Suitest provides easy unit testing for JavaScript code
 ##Synopsis:
 
 ```javascript
-.text( name, callback, [, context ] );
+.test( name, callback, [, context ] );
 .exec( x, [, y, context ] );
 .done( [ name ] );
+.text( description );
 .stop();
 .is();
 ```
 
-### .text ( name, callback, [, context ] );
+### .test ( name, callback, [, context ] );
 
 ```javascript
 var unit = new Suitest;
@@ -70,6 +71,11 @@ unit.test('test name', function(unit) {
 });
 ```
 
+### .text( description );
+
+```javascript
+unit.text('Test description');
+```
 
 ### .stop ();
 
