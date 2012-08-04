@@ -1,3 +1,5 @@
+var Suitest = require('./suitest.js');
+
 var unit = new Suitest;
 
 // test 1

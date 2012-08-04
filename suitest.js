@@ -366,3 +366,6 @@ var Suitest = function(__define__)
 	};
 
 }(Object.defineProperty);
+
+
+//module.exports = Suitest;
