@@ -22,6 +22,27 @@ Suitest provides easy unit testing for JavaScript code
 .is();
 ```
 
+### Installation
+
+*npm*
+
+```
+sudo npm install -g suitest
+```
+
+*git*
+
+```
+git clone git://github.com/monolithed/Suitest.git
+```
+
+*zip/gzip*
+
+```
+https://github.com/monolithed/Suitest/downloads
+```
+
+
 ### Screenshot
 
 ![Suitest](http://habrastorage.org/storage2/525/143/7b8/5251437b857e11ad9a6d82bbbd427479.png "Suitest")
