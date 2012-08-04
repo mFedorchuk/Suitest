@@ -4,7 +4,7 @@
  * Suitest
  * Provides easy unit testing for JavaScript code
  * @author: Alexander Guinness
- * @version: 0.0.2
+ * @version: 0.0.3
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
@@ -18,7 +18,7 @@ var Suitest = function(__define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.2',
+			version: '0.0.3',
 			license: 'MIT',
 			year:    2012
 		},
@@ -58,14 +58,17 @@ var Suitest = function(__define__)
 		 * Holds statistics
 		**/
 		log: {
+			time:   [],  // Elapsed time
 			stack:  0,  // Temporary property to get final callback
 			total:  0,  // Total number of tests
 			status: 0,  // Temporary property to get a periodic test status
 			failed: 0,  // Total number of failed tests
 			passed: 0,  // Total number of passed tests
 			params: 0,  // The <exec> parameters,
-			context: {} // <get> { test : context }
+			context: {} // <get> { test : context },
 		},
+
+		timeout: 100,
 
 		/**
 		 * __private__.log
@@ -105,6 +108,35 @@ var Suitest = function(__define__)
 				gray   : '37m',
 				reset  : '0m'
 			}[color];
+		},
+
+		/**
+		 * __private__.time
+		 * Getting total elapsed time
+		 * @param {Array} array
+		 * @return {Number} elapsed time in seconds
+		**/
+		time: function(array)
+		{
+			var result = 0;
+
+			if (Array.prototype.reduce)
+			{
+				result = array.reduce(function(x, y) {
+					return x + y;
+				});
+			}
+			else {
+				var i = array.length >>> 0;
+
+				while (i--)
+					result += array[i];
+			}
+
+			if (result >= 1000)
+				result /= 1000;
+
+			return result.toFixed(3);
 		}
 	},
 
@@ -179,9 +211,13 @@ var Suitest = function(__define__)
 				__private__.log.context[name] = data;
 
 				// Apply callback
-				__global__.setTimeout(function() {
+				__global__.setTimeout(function()
+				{
+					// Set start time
+					data.time = +new Date;
 					callback.call(this || context, data);
-				}, 100);
+				},
+				__private__.timeout);
 
 				__private__.log.stack++;
 				__private__.log.total++;
@@ -288,9 +324,12 @@ var Suitest = function(__define__)
 					data = __private__.data,
 					values = '';
 
+				// Elapsed time
+				var time = +new Date - this.time;
+
 				// Display the <text> section
 				if (text)
-					text = '\n     Description: ' + text;
+					text =   '\n     Description: ' + text;
 
 				// Display the extended statistics if the <exec> passed more than two parameters
 				if (__private__.log.params >= 2)
@@ -313,8 +352,14 @@ var Suitest = function(__define__)
 					'\n     Status:   ', __private__.log.status == 'passed' ? __private__.color('green') :
 
 					// Test status ( passed | failed )
-					__private__.color('red'), __private__.log.status, __private__.color('reset'), '\n\n'
+					__private__.color('red'), __private__.log.status, __private__.color('reset'),
+
+					// Elapsed time
+					'\n     Time:     ', time, 'ms', '\n\n'
 				);
+
+				//
+				__private__.log.time.push(time);
 
 				// Total statistics
 				if (--__private__.log.stack === 0 || __private__.stop)
@@ -331,7 +376,10 @@ var Suitest = function(__define__)
 						__private__.log.passed, ' passed, ',
 
 						// Total number of failed tests
-						__private__.log.failed, ' failed', '\n',
+						__private__.log.failed, ' failed, ',
+
+						// Total time elapsed
+						'time: ', __private__.time(__private__.log.time), 's\n',
 
 						// Line
 						__private__.line, __private__.color('reset'), '\n\nOk!\n'
