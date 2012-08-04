@@ -4,7 +4,7 @@
  * Suitest
  * Provides easy unit testing for JavaScript code
  * @author: Alexander Guinness
- * @version: 0.0.1
+ * @version: 0.0.2
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
