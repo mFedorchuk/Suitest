@@ -106,6 +106,7 @@ var set = function() {
 		.exec(true, 1)
 		.done();
 };
+```
 
 *Simple using*
 
