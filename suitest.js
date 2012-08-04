@@ -103,9 +103,9 @@ var Suitest = function(__define__)
 		{
 			return '\u001b[' + {
 				red    : '31m',
-				blue   : '36m',
 				green  : '32m',
 				yellow : '33m',
+				blue   : '36m',
 				gray   : '37m',
 				reset  : '0m'
 			}[color];
