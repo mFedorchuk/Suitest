@@ -3,6 +3,7 @@
 Suitest is a powerful and easy-to-use JavaScript test suite
 
 * Very simple to use
+* Minimum functions and maximum capacity
 * Client-side and server-side (including NodeJS) support
 * One of the most lightweightest libraries for unit testing
 * Support for working with asynchronous code
@@ -13,13 +14,13 @@ Suitest is a powerful and easy-to-use JavaScript test suite
 ##Synopsis:
 
 ```javascript
-.test( name, callback, [, context ] );
-.exec( x, [, y, context ] );
-.done( [ name ] );
-.text( description );
-.stop();
-.get();
-.is();
+.test ( name, callback, [, context ] );
+.exec ( x, [, y, context ] );
+.done ( [ name ] );
+.text ( description );
+.get ( name );
+.stop ();
+.is ();
 ```
 
 ### Installation
