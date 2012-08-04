@@ -106,9 +106,11 @@ var Suitest = function(__define__)
 				reset  : '0m'
 			}[color];
 		}
-	};
+	},
 
-	/** @constructor Suitest */
+	__global__ = this;
+
+	/** @constructor */
 	return function()
 	{
 		if (!(this instanceof Suitest))
@@ -177,7 +179,9 @@ var Suitest = function(__define__)
 				__private__.log.context[name] = data;
 
 				// Apply callback
-				callback.call(this || context, data);
+				__global__.setTimeout(function() {
+					callback.call(this || context, data);
+				}, 100);
 
 				__private__.log.stack++;
 				__private__.log.total++;
@@ -313,6 +317,8 @@ var Suitest = function(__define__)
 				);
 
 				var stop = __private__.stop;
+
+				console.log(__private__.log.stack)
 
 				// Total statistics
 				if (--__private__.log.stack === 0 || stop)
