@@ -7,6 +7,7 @@ Suitest provides easy unit testing for JavaScript code
 * One of the most lightweightest libraries for unit testing
 * Support for working with asynchronous code
 * Outline function callbacks!
+* Fluent interface support (chaining)
 
 
 ##Synopsis:
@@ -75,7 +76,7 @@ unit.test('test name', function(unit) {
 });
 ```
 
-### .text( description );
+### .text ( description );
 
 ```javascript
 unit.text('Test description');
@@ -87,7 +88,7 @@ unit.text('Test description');
 unit.stop();
 ```
 
-### .is()
+### .is ()
 
 ```javascript
 unit.exec(true, 1);
