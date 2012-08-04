@@ -2,7 +2,7 @@
 	"author": "Alexander Guinness <monolithed@gmail.com> (https://github.com/monolithed)",
 	"name": "suitest",
 	"title": "Suitest",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Suitest is a powerful and easy-to-use JavaScript test suite",
 	"keywords": ["unit", "tests", "unit tests", "testing", "javascript", "nodejs", "tdd"],
 	"homepage": "https://github.com/monolithed/Suitest",
