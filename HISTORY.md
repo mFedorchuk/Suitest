@@ -1,5 +1,6 @@
 # 0.0.2 / 2012-08-13
 
+* Added timer for <test> (fix for queue calls)
 * HISTORY.md:
 * README.md: added image
 * npm support: package.json
