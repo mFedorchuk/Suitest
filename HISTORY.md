@@ -1,5 +1,6 @@
 # 0.0.3 / 2012-08-13
 
+* done ( [ callback, [, context] ] );
 * Getting total elapsed time
 * Added __private__.time
 

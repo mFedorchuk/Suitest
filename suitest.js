@@ -302,7 +302,8 @@ var Suitest = function(__define__)
 			 * Suitest.done
 			 * Register a callback to fix test result
 			 * @public
-			 * @param {*} [ name ] - Test name
+			 * @param {Function} [ callback ]
+			 * @param {Object} [ context ]
 			 * @return {Object} this
 			 *
 			 * @example:
@@ -322,7 +323,7 @@ var Suitest = function(__define__)
 			 *    }, 2000);
 			 * });
 			**/
-			done: function(name)
+			done: function(callback, context)
 			{
 				var text = __private__.text || '',
 					data = __private__.data,
@@ -344,7 +345,7 @@ var Suitest = function(__define__)
 				__private__.write
 				(
 					// Test name
-					__private__.color('blue'), '<', name || this.name, '>', __private__.color('reset'),
+					__private__.color('blue'), '<', this.name, '>', __private__.color('reset'),
 
 					// Test Description
 					text,
@@ -362,7 +363,7 @@ var Suitest = function(__define__)
 					'\n     Time:     ', time, 'ms', '\n\n'
 				);
 
-				//
+				// Keep timers
 				__private__.log.time.push(time);
 
 				// Total statistics
@@ -399,6 +400,10 @@ var Suitest = function(__define__)
 				// Stop all tests
 				if (__private__.stop)
 					throw new Error('Stopped test execution!');
+
+				// Callback
+				if (typeof callback == 'function')
+					callback.call(this || context);
 
 				return this;
 			},

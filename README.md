@@ -29,7 +29,7 @@ Suitest is a powerful and easy-to-use JavaScript test suite
 *Register a callback to fix test result*
 
 ```javascript
-.done ( [ name ] );
+.done ( [ callback, [, context] ] );
 ```
 <br />
 *Add test description*
