@@ -1,0 +1,18 @@
+{
+	"author": "Alexander Guinness <monolithed@gmail.com> (https://github.com/monolithed)",
+	"name": "Suitest",
+	"description": "Provides easy unit testing for JavaScript code",
+	"keywords": ["unit-tests", "unit", "tests", "JavaScript", "testing", "TDD"],
+	"version": "0.0.1",
+	"homepage": "https://github.com/monolithed/ECMAScript-6",
+	"repository": {
+	"type": "git",
+	"url": "https://github.com/monolithed/ECMAScript-6"
+	},
+	"main": "./suitest.js",
+	"engines": {
+		"node": "~0.4.9"
+	},
+	"dependencies": {},
+	"devDependencies": {}
+}
