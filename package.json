@@ -19,7 +19,7 @@
 	},
 	"main": "./suitest.js",
 	"engines": {
-		"node": "~0.4.9"
+		"node": ">=0.4.9"
 	},
 	"dependencies": {},
 	"devDependencies": {}
