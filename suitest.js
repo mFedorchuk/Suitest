@@ -68,8 +68,11 @@ var Suitest = function(__define__)
 			context: {} // <get> { test : context },
 		},
 
-		// Callback timeout
-		timeout: 100,
+		/**
+		 * __private__.timeout
+		 * timeout for the <time> callback
+		**/
+		timeout: 25,
 
 		/**
 		 * __private__.log
