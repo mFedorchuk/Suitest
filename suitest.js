@@ -4,13 +4,15 @@
  * Suitest
  * Suitest is a powerful and easy-to-use JavaScript test suite
  * @author: Alexander Guinness
- * @version: 0.0.4
+ * @version: 0.0.5
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
 
-var Suitest = function(__define__)
+var Suitest = function(__object__, __define__)
 {
+	var __global__ = this;
+
 	'use strict';
 
 	var __private__ = {
@@ -18,7 +20,7 @@ var Suitest = function(__define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.4',
+			version: '0.0.5',
 			license: 'MIT',
 			year:    2012
 		},
@@ -45,7 +47,7 @@ var Suitest = function(__define__)
 					this[name] = value;
 			},
 
-			__own__ = Object.prototype.hasOwnProperty;
+			__own__ = __object__.hasOwnProperty;
 
 			for (var key in object) {
 				if (__own__.call(object, key))
@@ -85,8 +87,21 @@ var Suitest = function(__define__)
 		 * Output stream function
 		 * @return {void}
 		**/
-		write: function() {
-			console.log(Array.prototype.join.call(arguments, ''));
+		write: function()
+		{
+			/*
+			* Object console is not part of ECMAScript standard,
+			* so we'd check the one.
+			* But there're some stupid problems in the engines:
+			*
+			* Object.prototype.toString.call(console):
+			* [object Console] // Chrome
+			* [object Object]  // NodeJS, Opera, IE
+			*/
+			var console = __global__.console;
+
+			if (console && typeof console === 'object')
+				console.log(Array.prototype.join.call(arguments, ''));
 		},
 
 		/**
@@ -104,6 +119,9 @@ var Suitest = function(__define__)
 		**/
 		color: function(color)
 		{
+			if (__global__.toString() === '[object Window]')
+				return '';
+
 			return '\u001b[' + {
 				red    : '31m',
 				green  : '32m',
@@ -142,9 +160,7 @@ var Suitest = function(__define__)
 
 			return result.toFixed(3);
 		}
-	},
-
-	__global__ = this;
+	};
 
 	/** @constructor */
 	return function()
@@ -226,7 +242,10 @@ var Suitest = function(__define__)
 				timeout = __global__.setTimeout;
 
 				// Apply callback
-				timeout ? timeout(apply, __private__.timeout) : apply();
+				if (__object__.toString.call(timeout) === '[object Function]')
+					timeout(apply, __private__.timeout);
+
+				else apply();
 
 				__private__.log.stack++;
 				__private__.log.total++;
@@ -519,7 +538,7 @@ var Suitest = function(__define__)
 		});
 	};
 
-}(Object.defineProperty);
+}(Object.prototype, Object.defineProperty);
 
 // NodeJS support
 try { module.exports = Suitest; } catch(error) {}
