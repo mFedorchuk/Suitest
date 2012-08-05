@@ -3,8 +3,18 @@
 	"name": "suitest",
 	"title": "Suitest",
 	"version": "0.0.3",
-	"description": "Suitest is a powerful and easy-to-use JavaScript test suite",
-	"keywords": ["unit", "tests", "unit tests", "testing", "javascript", "nodejs", "tdd"],
+	"description": "Suitest is a powerful and easy-to-use JavaScript BDD test suite",
+	"keywords": [
+		"unit",
+		"tests",
+		"unit tests",
+		"testing",
+		"javascript",
+		"nodejs",
+		"bdd",
+		"agile",
+		"behavior-driven development"
+	],
 	"homepage": "https://github.com/monolithed/Suitest",
 	"repository": {
 	"type": "git",
