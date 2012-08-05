@@ -13,7 +13,7 @@ Suitest is a powerful and easy-to-use JavaScript BDD test suite
 
 ####BDD practices:
 
-Behavior-driven development (or BDD) is an agile software development technique devised by Dan North[1] as a response to the issues encountered teaching test-driven development.
+Behavior-driven development (or BDD) is an agile software development technique devised by Dan North as a response to the issues encountered teaching test-driven development.
 
 *The practices of BDD include:*
 
