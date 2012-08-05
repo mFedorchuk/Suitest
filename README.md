@@ -1,6 +1,6 @@
 # Suitest
 
-Suitest is a powerful and easy-to-use JavaScript test suite
+Suitest is a powerful and easy-to-use JavaScript BDD test suite
 
 * Very simple to use
 * Minimum functions and maximum capacity
@@ -9,6 +9,23 @@ Suitest is a powerful and easy-to-use JavaScript test suite
 * Support for working with asynchronous code
 * Outline function callbacks!
 * Fluent interface support (chaining)
+
+
+####BDD practices:
+
+Behavior-driven development (or BDD) is an agile software development technique devised by Dan North[1] as a response to the issues encountered teaching test-driven development.
+
+*The practices of BDD include:*
+
+* The practices of BDD include:
+* Establishing the goals of different stakeholders required for a vision to be implemented
+* Drawing out features which will achieve those goals using feature injection
+* Involving stakeholders in the implementation process through outside–in software development
+* Using examples to describe the behavior of the application, or of units of code
+* Automating those examples to provide quick feedback and regression testing
+* Using 'should' when describing the behavior of software to help clarify responsibility and allow the software's functionality to be questioned
+* Using 'ensure' when describing responsibilities of software to differentiate outcomes in the scope of the code in question from side-effects of other elements of code.
+* Using mocks to stand-in for collaborating modules of code which have not yet been written
 
 
 ##Synopsis
