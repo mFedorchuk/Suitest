@@ -4,7 +4,7 @@
  * Suitest
  * Suitest is a powerful and easy-to-use JavaScript test suite
  * @author: Alexander Guinness
- * @version: 0.0.3
+ * @version: 0.0.4
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
@@ -18,7 +18,7 @@ var Suitest = function(__define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.3',
+			version: '0.0.4',
 			license: 'MIT',
 			year:    2012
 		},
@@ -199,7 +199,7 @@ var Suitest = function(__define__)
 				if (!name || typeof callback !== 'function')
 					throw new TypeError('Suitest.test ( name, callback, [, context ] );');
 
-				// Callbacks will be set as properties <test>
+				// The callbacks will be set as properties for <test>
 				var data = {
 					name: name,
 					done: this.done,
@@ -217,7 +217,7 @@ var Suitest = function(__define__)
 				{
 					// Set start time
 					data.time = +new Date;
-					callback.call(this || context, data);
+					callback.call(data || context, data);
 				},
 
 				timeout = __global__.setTimeout;
