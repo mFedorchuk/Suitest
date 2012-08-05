@@ -341,12 +341,11 @@ var Suitest = function(__define__)
 
 				// Display the <text> section
 				if (text)
-					text =   '\n     Description: ' + text;
+					text = '\n     Description: ' + text;
 
 				// Display the extended statistics if the <exec> passed more than two parameters
 				if (__private__.log.params >= 2)
-					values = '\n     Expected: '  + data[0] +
-						     '\n     Actual:   '  + data[1];
+					values = '\n     Expected: '.concat(data[0], '\n     Actual:   ', data[1]);
 
 				// Periodic reports
 				__private__.write
@@ -354,7 +353,7 @@ var Suitest = function(__define__)
 					// Test name
 					__private__.color('blue'), '<', this.name, '>', __private__.color('reset'),
 
-					// Test Description
+					// Test description
 					text,
 
 					// Extended statistics ( Expected | Actual )
