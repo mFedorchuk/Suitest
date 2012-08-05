@@ -1,3 +1,7 @@
+# 0.0.4 / 2012-08-14
+* More documentation
+* Refactoring
+
 # 0.0.3 / 2012-08-13
 
 * setTimeout fix;
