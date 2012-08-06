@@ -1,4 +1,9 @@
 # 0.0.5 / 2012-08-14
+* Added Suitest.config
+* Added <finish>
+* <text> replaced with <describe>
+
+# 0.0.5 / 2012-08-14
 * Added safe conditions for console object and setTimeout
 * Fixed bug with global object in strict mode (NodeJS worked fine o_O)
 * Fixed unicode escapes bug for host engines

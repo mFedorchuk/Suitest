@@ -4,14 +4,15 @@
  * Suitest
  * Suitest is a powerful and easy-to-use JavaScript test suite
  * @author: Alexander Guinness
- * @version: 0.0.5
+ * @version: 0.0.6
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
 
 var Suitest = function(__object__, __define__)
 {
-	var __global__ = this;
+	var __global__ = this,
+		__own__ = __object__.hasOwnProperty;
 
 	'use strict';
 
@@ -20,7 +21,7 @@ var Suitest = function(__object__, __define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.5',
+			version: '0.0.6',
 			license: 'MIT',
 			year:    2012
 		},
@@ -29,7 +30,7 @@ var Suitest = function(__object__, __define__)
 		 * __private__.define
 		 * It is used to add an own properties and set the descriptors:
 		 * {
-		 *    configurable: false,
+		 *    __config__urable: false,
 		 *    enumerable: false,
 		 *    writable: false
 		 * }
@@ -45,13 +46,29 @@ var Suitest = function(__object__, __define__)
 					});
 				else
 					this[name] = value;
-			},
-
-			__own__ = __object__.hasOwnProperty;
+			}
 
 			for (var key in object) {
 				if (__own__.call(object, key))
 					__set__.call(this, key, object[key]);
+			}
+		},
+
+		/**
+		 * __private__.is
+		 * Determine the internal ECMAScript [[Class]] of an object.
+		 * @param {Object} object
+		 * @param {String} name
+		 * @return {Boolean}
+		**/
+		is: function(object, name) {
+			return __object__.toString.call(object) === '[object ' + name + ']';
+		},
+
+		extend: function(x, y) {
+			for (var key in y) {
+				if (__own__.call(y, key))
+					x[key] = y[key];
 			}
 		},
 
@@ -74,7 +91,7 @@ var Suitest = function(__object__, __define__)
 		 * __private__.timeout
 		 * timeout for the <time> callback
 		**/
-		timeout: 25,
+		timeout: 0,
 
 		/**
 		 * __private__.log
@@ -155,10 +172,7 @@ var Suitest = function(__object__, __define__)
 					result += array[i];
 			}
 
-			if (result >= 1000)
-				result /= 1000;
-
-			return result.toFixed(3);
+			return result + 'ms';
 		}
 	};
 
@@ -193,6 +207,16 @@ var Suitest = function(__object__, __define__)
 			__private__.line, __private__.color('reset'), '\n'
 		);
 
+		/** @public */
+		var __config__ = {
+			pad: '     ',
+			describe: 58
+		};
+
+		// Register config
+		if (__private__.is(Suitest.config, 'Object'))
+			__private__.extend(__config__, Suitest.config);
+
 		__private__.define.call(Suitest.prototype, {
 			/**
 			 * Suitest.test
@@ -215,7 +239,7 @@ var Suitest = function(__object__, __define__)
 			**/
 			test: function(name, callback, context)
 			{
-				if (!name || typeof callback !== 'function')
+				if (!name || !__private__.is(callback, 'Function'))
 					throw new TypeError('Suitest.test ( name, callback, [, context ] );');
 
 				// The callbacks will be set as properties for <test>
@@ -223,10 +247,10 @@ var Suitest = function(__object__, __define__)
 					name: name,
 					done: this.done,
 					exec: this.exec,
-					text: this.text,
 					stop: this.stop,
 					get:  this.get,
-					is:   this.is
+					is:   this.is,
+					describe: this.describe
 				};
 
 				// Set context
@@ -242,7 +266,7 @@ var Suitest = function(__object__, __define__)
 				timeout = __global__.setTimeout;
 
 				// Apply callback
-				if (__object__.toString.call(timeout) === '[object Function]')
+				if (__private__.is(timeout, 'Function'))
 					timeout(apply, __private__.timeout);
 
 				else apply();
@@ -360,11 +384,13 @@ var Suitest = function(__object__, __define__)
 
 				// Display the <text> section
 				if (text)
-					text = '\n     Description: ' + text;
+					text = '\n' + __config__.pad +'Description: ' + text;
 
 				// Display the extended statistics if the <exec> passed more than two parameters
 				if (__private__.log.params >= 2)
-					values = '\n     Expected: '.concat(data[0], '\n     Actual:   ', data[1]);
+					values = '\n', __config__.pad, 'Expected: '.concat(data[0], '\n', __config__.pad, 'Actual:   ', data[1]);
+
+				var status = __private__.log.status;
 
 				// Periodic reports
 				__private__.write
@@ -373,19 +399,19 @@ var Suitest = function(__object__, __define__)
 					__private__.color('blue'), '<', this.name, '>', __private__.color('reset'),
 
 					// Test description
-					text,
+					text.replace(new RegExp('.{' + __config__.describe + '}', 'g'), '$&\n' + __config__.pad),
 
 					// Extended statistics ( Expected | Actual )
 					values,
 
 					// Test status color
-					'\n     Status:   ', __private__.log.status == 'passed' ? __private__.color('green') :
+					'\n', __config__.pad, 'Status:   ', status == 'passed' ? __private__.color('green') :
 
 					// Test status ( passed | failed )
-					__private__.color('red'), __private__.log.status, __private__.color('reset'),
+					__private__.color('red'), status, __private__.color('reset'),
 
 					// Elapsed time
-					'\n     Time:     ', time, 'ms', '\n\n'
+					'\n', __config__.pad, 'Time:     ', time, 'ms\n\n'
 				);
 
 				// Keep timers
@@ -394,26 +420,43 @@ var Suitest = function(__object__, __define__)
 				// Total statistics
 				if (--__private__.log.stack === 0 || __private__.stop)
 				{
+					var total_time = __private__.time(__private__.log.time),
+						passed = __private__.log.passed,
+						failed = __private__.log.failed,
+						total  = __private__.log.total;
+
 					__private__.write
 					(
-						// Line
 						__private__.color('gray'), __private__.line, '\n',
 
 						// Total number of tests
-						' Total: ', __private__.log.total, ' tests, ',
+						' Total: ', total, ' tests, ',
 
 						// Total number of passed tests
-						__private__.log.passed, ' passed, ',
+						passed, ' passed, ',
 
 						// Total number of failed tests
-						__private__.log.failed, ' failed, ',
+						failed, ' failed, ',
 
 						// Total time elapsed
-						'time: ', __private__.time(__private__.log.time), 's\n',
+						'time: ', total_time, '\n',
 
 						// Line
 						__private__.line, __private__.color('reset'), '\n\nOk!\n'
 					);
+
+					// Apply <finish> callback
+					if (__private__.is(__private__.finish, 'Function'))
+					{
+						__private__.finish({
+							total:  total,
+							failed: failed,
+							passed: passed,
+							time:   total_time
+						});
+
+						__private__.finish = null;
+					}
 				}
 
 				// Erase the <text> section
@@ -427,8 +470,13 @@ var Suitest = function(__object__, __define__)
 					throw new Error('Stopped test execution!');
 
 				// Callback
-				if (typeof callback == 'function')
-					callback.call(this || context);
+				if (__private__.is(callback, 'Function'))
+				{
+					callback.call(this || context, {
+						status: status,
+						time:   time
+					});
+				}
 
 				return this;
 			},
@@ -451,6 +499,42 @@ var Suitest = function(__object__, __define__)
 
 				return this;
 			},
+
+			/**
+			 * Suitest.finish
+			 * Register a final callback whenever all the tests have finished running
+			 * @public
+			 * @exports Suitest.finish as __private__.finish
+			 * @param {Function} callback - Register for object properties:
+			 *    total  - The total number of tests
+			 *    filed  - The number of failures,
+			 *    passed - The number of tests that passed assertions,
+			 *    time   - The total time in milliseconds for all tests
+			 *
+			 * @return {Object} this
+			 *
+			 * @example:
+			 *
+			 * unit.test('test 1', function() {
+			 *     this.exec(true).done();
+			 * });
+			 *
+			 * unit.test('test 2', function(unit) {
+			 *    this.exec(true).done();
+			 * });
+			 *
+			 * unit.finish(function(data) {
+			 *     console.log('Total:', total, 'Filed: ', filed, 'Passed: ', passed, 'Time: ', time);
+			 * });
+			 *
+			 * // Total: 6, Filed: 2, Passed: 4, Time: 1.00
+			 *
+			**/
+			finish: function(callback) {
+				__private__.finish = callback;
+				return this;
+			},
+
 
 			/**
 			 * Suitest.stop
@@ -530,7 +614,7 @@ var Suitest = function(__object__, __define__)
 			 *    unit.done();
 			 * });
 			**/
-			text: function(text) {
+			describe: function(text) {
 				__private__.text = text;
 
 				return this;
