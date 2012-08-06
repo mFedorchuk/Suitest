@@ -4,7 +4,7 @@
  * Suitest
  * Suitest is a powerful and easy-to-use JavaScript test suite
  * @author: Alexander Guinness
- * @version: 0.0.6
+ * @version: 0.0.7
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
@@ -21,7 +21,7 @@ var Suitest = function(__object__, __define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.6',
+			version: '0.0.7',
 			license: 'MIT',
 			year:    2012
 		},
@@ -388,7 +388,7 @@ var Suitest = function(__object__, __define__)
 
 				// Display the extended statistics if the <exec> passed more than two parameters
 				if (__private__.log.params >= 2)
-					values = '\n', __config__.pad, 'Expected: '.concat(data[0], '\n', __config__.pad, 'Actual:   ', data[1]);
+					values = '\n' + __config__.pad + 'Expected: '.concat(data[0], '\n', __config__.pad, 'Actual:   ', data[1]);
 
 				var status = __private__.log.status;
 

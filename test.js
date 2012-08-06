@@ -4,12 +4,12 @@ var unit = new Suitest;
 
 // test 1
 unit.test('test 1', function(unit) {
-	unit.text('Test description 1!').exec(true, 1).done(); // true
+	unit.describe('Test description 1!').exec(true, 1).done(); // true
 });
 
 // test 2
 unit.test('test 2', function(unit) {
-	unit.text('Test description 2!');
+	unit.describe('Test description 2!');
 
 	if(unit.exec(typeof null !== 'object').is()) // true
 		unit.stop();
