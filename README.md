@@ -46,13 +46,13 @@ Behavior-driven development (or BDD) is an agile software development technique 
 *Register a callback to fix test result*
 
 ```javascript
-.done ( [ callback, [, context] ] );
+.done ( [ callback, context] );
 ```
 <br />
 *Add test description*
 
 ```javascript
-.text ( description );
+.describe ( description );
 ```
 <br />
 *Register outline function callbacks*
@@ -71,6 +71,12 @@ Behavior-driven development (or BDD) is an agile software development technique 
 
 ```javascript
 .is ();
+```
+<br />
+*Register a final callback whenever all the tests have finished running*
+
+```javascript
+.finish ( [callback, [total, filed, passed, time] );
 ```
 
 ## Installation
@@ -96,7 +102,7 @@ https://github.com/monolithed/Suitest/downloads
 
 ## Screenshot
 
-![Suitest](http://habrastorage.org/storage2/355/f86/994/355f869942763e4f7239010e53284ebd.png "Suitest")
+![Suitest](http://upload.wikimedia.org/wikipedia/commons/8/8c/Suitest_in_console.png "Suitest")
 
 ## API
 
@@ -157,10 +163,28 @@ unit.done(function() {
 	//..
 });
 
-### .text ( description );
+### .describe ( description );
 
 ```javascript
-unit.text('Test description');
+unit.describe('Test description');
+```
+
+### .finish ( [callback, [total, filed, passed, time] );
+
+```javascript
+unit.test('test 1', function() {
+    this.exec(true).done();
+});
+
+unit.test('test 2', function(unit) {
+   this.exec(true).done();
+});
+
+unit.finish(function(data) {
+    console.log('Total:', total, 'Filed: ', filed, 'Passed: ', passed, 'Time: ', time);
+});
+
+// Total: 6, Filed: 2, Passed: 4, Time: 1.00
 ```
 
 ### .stop ();
@@ -275,7 +299,7 @@ unit
 })
 
 .test('test 2', function(unit) {
-	unit.text('test description').exec(true, 1).done();
+	unit.describe('test description').exec(true, 1).done();
 })
 
 .test('test 2', function(unit) {
