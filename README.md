@@ -157,12 +157,6 @@ unit.test('test name', function(unit) {
 });
 ```
 
-*With callback:*
-
-unit.done(function() {
-	//..
-});
-
 ### .describe ( description );
 
 ```javascript
