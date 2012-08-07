@@ -1,6 +1,6 @@
 # 0.0.8 / 2012-08-18
 * `[critical]` Fixed bug with object instantion
-* __private.timeout -> __config__.timeout
+* \__private.timeout -> \__config\__.timeout
 * Added __private.log.info
 * Refactoring
 
@@ -29,7 +29,7 @@
 * setTimeout fix;
 * done ( [ callback, [, context] ] );
 * Getting total elapsed time
-* Added __private__.time
+* Added \__private\__.time
 
 # 0.0.2 / 2012-08-13
 
