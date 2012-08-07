@@ -1,16 +1,24 @@
+# 0.0.8 / 2012-08-18
+* `[critical]` Fixed bug with object instantion
+* __private.timeout -> __config__.timeout
+* Added __private.log.info
+* Refactoring
+
 # 0.0.7 / 2012-08-17
-* Fixed bug with Expected and Actual params in the <done>
-* Fixed tests
+* Added __private__ extend()
+* `[critical]` Fixed bug with Expected and Actual params in the <done>
+* `[critical]` Fixed tests
 
 # 0.0.6 / 2012-08-16
 * Added Suitest.config
 * Added <finish>
+* More documentation
 * <text> replaced with <describe>
 
 # 0.0.5 / 2012-08-15
 * Added safe conditions for console object and setTimeout
-* Fixed bug with global object in strict mode (NodeJS worked fine o_O)
-* Fixed unicode escapes bug for host engines
+* `[critical]` Fixed bug with global object in strict mode (NodeJS worked fine o_O)
+* `[critical]` Fixed unicode escapes bug for host engines
 
 # 0.0.4 / 2012-08-14
 * More documentation
