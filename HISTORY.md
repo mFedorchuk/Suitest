@@ -3,6 +3,7 @@
 * The modules are supported via constructor
 * <name> - the module name
 * <config> now is a static function
+* <exec>: !== -> !=
 * Global refactoring
 
 # 0.0.8 / 2012-08-18
