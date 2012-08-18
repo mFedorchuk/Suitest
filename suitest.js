@@ -48,7 +48,7 @@ void function(__object__, __define__)
 				// Release year
 				info.year, '\n',
 
-				this.line, this.color('reset'), '\n'
+				this.line, this.color('reset')
 			);
 		},
 
