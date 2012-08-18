@@ -8,6 +8,7 @@ Suitest is a powerful and easy-to-use JavaScript BDD test suite
 * One of the most lightweightest libraries for unit testing
 * Support for working with asynchronous code
 * Outline function callbacks!
+* Modular system
 * Fluent interface support (chaining)
 
 

@@ -1,3 +1,10 @@
+# 0.0.9 / 2012-08-19
+* New instance system
+* The modules are supported via constructor
+* <name> - the module name
+* <config> now is a static function
+* Global refactoring
+
 # 0.0.8 / 2012-08-18
 * `[critical]` Fixed bug with object instantion
 * \__private.timeout -> \__config\__.timeout
