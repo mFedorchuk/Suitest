@@ -103,7 +103,7 @@ https://github.com/monolithed/Suitest/downloads
 
 ## Screenshot
 
-![Suitest](http://upload.wikimedia.org/wikipedia/commons/8/8c/Suitest_in_console.png "Suitest")
+![Suitest](http://habrastorage.org/storage2/36a/e9f/7b7/36ae9f7b7c575ebbde1323071a1d4216.png "Suitest")
 
 ## API
 
