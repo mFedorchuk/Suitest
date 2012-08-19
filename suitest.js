@@ -206,19 +206,18 @@ void function(__object__, __define__)
 			 * Holds statistics
 			**/
 			__log__: {
-				stack:  0,  // The Temporary property to get final callback
-				total:  0,  // Total number of tests
-				status: 0,  // The Temporary property to get a periodic test status
-				failed: 0,  // Total number of failed tests
-				passed: 0,  // Total number of passed tests
-				params: 0,  // The <exec> parameters,
-				data:   [], // <exec> operands (x, y)
-				info:   [], // Result info
-				time:   [], // Elapsed time
-				context: {} // <get> { test : context },
-			},
-
-			name: name
+				name:   name, // The module name
+				data:   [],   // <exec> operands (x, y)
+				info:   [],   // Result info
+				time:   [],   // Elapsed time
+				stack:  0,    // The Temporary property to get final callback
+				total:  0,    // Total number of tests
+				status: 0,    // The Temporary property to get a periodic test status
+				failed: 0,    // Total number of failed tests
+				passed: 0,    // Total number of passed tests
+				params: 0,    // The <exec> parameters,
+				context: {}   // <get> { test : context },
+			}
 		});
 	};
 
@@ -260,14 +259,14 @@ void function(__object__, __define__)
 
 			// The callbacks will be set as properties for <test>
 			var data = {
-				'0':  this,
 				name: name,
 				done: this.done,
 				exec: this.exec,
 				stop: this.stop,
 				get:  this.get,
 				is:   this.is,
-				describe: this.describe
+				describe: this.describe,
+				__log__: this.__log__
 			};
 
 			// Set context
@@ -314,7 +313,7 @@ void function(__object__, __define__)
 		 * });
 		**/
 		describe: function(text) {
-			this[0].__log__.text = text;
+			this.__log__.text = text;
 			return this;
 		},
 
@@ -347,7 +346,7 @@ void function(__object__, __define__)
 		{
 			// Elapsed time
 			var time = +new Date - this.time,
-				__log__ = this[0].__log__;
+				__log__ = this.__log__;
 
 			var text = __log__.text || '',
 				values = '';
@@ -430,7 +429,7 @@ void function(__object__, __define__)
 				}
 
 				// Add the module name
-				__log__.info.unshift('\n[' + this[0].name + ']\n');
+				__log__.info.unshift('\n[' + __log__.name + ']\n');
 
 				// Show test result
 				__private__.write.apply(null, __log__.info);
@@ -512,9 +511,9 @@ void function(__object__, __define__)
 				}[operator || '=='];
 			}
 
-			var __log__ = this[0].__log__;
-
 			status = status ? 'passed' : 'failed';
+
+			var __log__ = this.__log__;
 
 			// Set <exec> arguments length
 			__log__.params = length;
@@ -625,7 +624,7 @@ void function(__object__, __define__)
 		 * });
 		**/
 		is: function() {
-			return this[0].__log__.status == 'passed';
+			return this.__log__.status == 'passed';
 		},
 
 		/**
