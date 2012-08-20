@@ -2,7 +2,6 @@
 
 /**
  * Suitest is a powerful and easy-to-use JavaScript test suite
- * @requires Object.keys, Array.prototype.reduce, Array.prototype.forEach, Object.defineProperties
  * @author: Alexander Guinness
  * @version: 0.0.9
  * license: MIT
