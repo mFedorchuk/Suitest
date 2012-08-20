@@ -1,4 +1,5 @@
 # 0.0.9 / 2012-08-19
+* README: Installation (Downloading, including, Using)
 * New instance system
 * The modules are supported via constructor
 * <name> - the module name

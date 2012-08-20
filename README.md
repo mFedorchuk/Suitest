@@ -4,7 +4,7 @@ Suitest is a powerful and easy-to-use JavaScript BDD test suite
 
 * Very simple to use
 * Minimum functions and maximum capacity
-* Client-side and server-side (including NodeJS) support
+* Client-side and server-side (including Node.js) support
 * One of the most lightweightest libraries for unit testing
 * Support for working with asynchronous code
 * Outline function callbacks!
@@ -18,7 +18,6 @@ Behavior-driven development (or BDD) is an agile software development technique 
 
 *The practices of BDD include:*
 
-* The practices of BDD include:
 * Establishing the goals of different stakeholders required for a vision to be implemented
 * Drawing out features which will achieve those goals using feature injection
 * Involving stakeholders in the implementation process through outside–in software development
@@ -82,6 +81,10 @@ Behavior-driven development (or BDD) is an agile software development technique 
 
 ## Installation
 
+#### Downloading
+
+Choose one of the ways to download the Suitest:
+
 *npm*
 
 ```
@@ -100,6 +103,23 @@ git clone git://github.com/monolithed/Suitest.git
 https://github.com/monolithed/Suitest/downloads
 ```
 
+#### Server-side including
+
+```javascript
+var Suitest = require('./suitest.js');
+```
+
+#### Client-side including
+
+```html
+<script src="./suitest.js" type="text/javascript"></script>
+```
+
+#### Using
+
+```javascript
+var unit = new Suitest('Module name');
+```
 
 ## Screenshot
 
@@ -113,7 +133,7 @@ https://github.com/monolithed/Suitest/downloads
 ```javascript
 var unit = new Suitest;
 
-unit.test('test name', function(unit) {
+unit.test('test name', function(unit) {typ
 	unit.exec(true, 1); // true
 	unit.done();
 });
