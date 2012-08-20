@@ -1,4 +1,5 @@
 # 0.0.9 / 2012-08-19
+* Description section now 63 chars
 * \__private\__.stop -> this.__log__.stop
 * README: License
 * README: call/apply/bind fixed example
