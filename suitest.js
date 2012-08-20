@@ -145,20 +145,11 @@ void function(__object__, __define__)
 		**/
 		time: function(array)
 		{
-			var result = 0;
+			var result = 0,
+			i = array.length >>> 0;
 
-			if (Array.prototype.reduce)
-			{
-				result = array.reduce(function(x, y) {
-					return x + y;
-				});
-			}
-			else {
-				var i = array.length >>> 0;
-
-				while (i--)
-					result += array[i];
-			}
+			while (i--)
+				result += array[i];
 
 			return result + 'ms';
 		},
