@@ -324,9 +324,8 @@ unit
 ```
 
 
-##.
+## License
 
-* License
-   Suitest is licensed under the MIT (MIT_LICENSE.txt) license
+* Suitest is licensed under the MIT (MIT_LICENSE.txt) license
 
 * Copyright (c) 2012 [Alexander Guinness] (https://github.com/monolithed)
