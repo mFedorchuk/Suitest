@@ -388,7 +388,7 @@ void function(__object__, __define__)
 			__log__.time.push(time);
 
 			// Total statistics by the module
-			if (--__log__.stack === 0 || __private__.stop)
+			if (--__log__.stack === 0 || __log__.stop)
 			{
 				var total_time = __private__.time(__log__.time),
 					passed = __log__.passed,
@@ -451,7 +451,7 @@ void function(__object__, __define__)
 			}
 
 			// Stop all tests
-			if (__private__.stop)
+			if (__log__.stop)
 				throw new Error('Stopped test execution!');
 
 			return this;
@@ -566,7 +566,7 @@ void function(__object__, __define__)
 		},
 
 		/**
-		 * Suitest.stop
+		 * Suitest.get
 		 * Register outline function callbacks
 		 * @public
 		 * @param {String} name
@@ -641,7 +641,7 @@ void function(__object__, __define__)
 		 * });
 		**/
 		stop: function() {
-			__private__.stop = true;
+			this.__log__.stop = true;
 			return this;
 		}
 	});
@@ -650,5 +650,5 @@ void function(__object__, __define__)
 
 }(Object.prototype, Object.defineProperty);
 
-// NodeJS support
+// server-side support
 try { module.exports = Suitest; } catch(error) {}

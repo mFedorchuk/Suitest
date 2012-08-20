@@ -1,4 +1,5 @@
 # 0.0.9 / 2012-08-19
+* \__private\__.stop -> this.__log__.stop
 * README: License
 * README: call/apply/bind fixed example
 * README: Installation (Downloading, including, Using)
@@ -11,12 +12,12 @@
 
 # 0.0.8 / 2012-08-18
 * `[critical]` Fixed bug with object instantion
-* \__private.timeout -> \__config\__.timeout
+* \__private\__.timeout -> \__config\__.timeout
 * Added __private.log.info
 * Refactoring
 
 # 0.0.7 / 2012-08-17
-* Added __private__ extend()
+* Added \__private\__.extend()
 * `[critical]` Fixed bug with Expected and Actual params in the <done>
 * `[critical]` Fixed tests
 
@@ -28,7 +29,7 @@
 
 # 0.0.5 / 2012-08-15
 * Added safe conditions for console object and setTimeout
-* `[critical]` Fixed bug with global object in strict mode (NodeJS worked fine o_O)
+* `[critical]` Fixed bug with global object in strict mode (Node.js worked fine o_O)
 * `[critical]` Fixed unicode escapes bug for host engines
 
 # 0.0.4 / 2012-08-14
