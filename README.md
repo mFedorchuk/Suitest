@@ -271,7 +271,7 @@ unit.test('test', function() {
 });
 ```
 
-*.test()'s parameter*
+*parameter*
 
 ```javascript
 unit.test('test', function(context) {
@@ -293,7 +293,7 @@ unit.test('test', set);
 
 ```javascript
 var set = function() {
-	return unit.get('test').exec(true).done();
+	return this.exec(true).done();
 };
 
 unit.test('test', function() {
