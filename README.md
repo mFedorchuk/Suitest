@@ -133,7 +133,7 @@ var unit = new Suitest('Module name');
 ```javascript
 var unit = new Suitest;
 
-unit.test('test name', function(unit) {typ
+unit.test('test name', function(unit) {
 	unit.exec(true, 1); // true
 	unit.done();
 });
