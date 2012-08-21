@@ -1,3 +1,6 @@
+# 0.1.0 / 2012-08-25
+* Added new `eg` operator for the egal comparison (using Object.is(x, y))
+
 # 0.0.9 / 2012-08-19
 * Description section now 63 chars
 * \__private\__.stop -> this.__log__.stop

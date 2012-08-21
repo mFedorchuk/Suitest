@@ -3,7 +3,7 @@
 /**
  * Suitest is a powerful and easy-to-use JavaScript test suite
  * @author: Alexander Guinness
- * @version: 0.0.9
+ * @version: 0.1.1
  * license: MIT
  * @date: ‎Sun Aug 12 03:30:00 2012
  **/
@@ -20,7 +20,7 @@ void function(__object__, __define__)
 			title:   'Suitest',
 			author:  'Alexander Guinnes',
 			email:   '<monolithed@gmail.com>',
-			version: '0.0.9',
+			version: '0.1.0',
 			license: 'MIT',
 			year:    2012
 		},
@@ -182,6 +182,33 @@ void function(__object__, __define__)
 		describe: 58,    // Max width for description section
 		timeout:  25     // Timeout for the <time> callback
 	};
+
+	/**
+	 * Object.is
+	 * The internal comparison abstract operation SameValue(x, y),
+	 * where x and y are ECMAScript language values, produces true or false (ECMAScript 5 9.12).
+	 * @param {*} - first generic value for egal comparison
+	 * @param {*} - second generic value for egal comparison
+	 * @return {Boolean}
+	 *
+	 * @example:
+	 *
+	 * Object.is(0,-0)     // false
+	 * Object.is('0', 0)   // false
+	 * Object.is(0, 0)     // true
+	 * Object.is(NaN, NaN) // true
+	**/
+	__private__.define.call(Object, {
+		is: function(x, y)
+		{
+			// 0 === -0, NaN !== NaN, 0 = false, etc.
+			if (x === y)
+				return x !== 0 || 1 / x === 1 / y;
+
+			// object !== object ([] !== [], {} !== {}, etc.)
+			return x !== x && y !== y;
+		}
+	});
 
 	/** @constructor */
 	__global__.Suitest = function(name)
@@ -493,11 +520,12 @@ void function(__object__, __define__)
 					'==' : x ==  y,
 					'===': x === y,
 					'!==': x !== y,
-					'!=' : x != y,
+					'!=' : x !=  y,
 					'<'  : x  <  y,
 					'>'  : x  >  y,
 					'<=' : x <=  y,
-					'>=' : x >=  y
+					'>=' : x >=  y,
+					'eg' : Object.is(x, y) // Egal comparison
 				}[operator || '=='];
 			}
 

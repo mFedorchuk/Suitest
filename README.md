@@ -324,6 +324,37 @@ unit
 ```
 
 
+### Operators
+
+*`==` operator is used by default and for most operations, you can miss it:*
+
+```javascript
+unit.exec(true, 1);
+```
+
+*You can also specify it explicitly:*
+
+```javascript
+unit.exec(true, 1, '==');
+```
+
+*Other available operators:*
+<br />
+`===`, `!==`, `!==`, `!=`, `<`, `>`, `<=`, `>=`, `eq` <br />
+
+*Special `eg` operator for egal comparison.
+The internal comparison abstract operation SameValue(x, y), where x and y are ECMAScript language values, produces true or false (ECMAScript 5 9.12).*
+<br />
+
+
+```javascript
+unit.exec(NaN, NaN, 'eq'); // true
+unit.exec(0,   0, 'eq');   // false
+unit.exec(-0, +0, 'eq');   // false
+unit.exec('0', 0, 'eq');   // false
+```
+
+
 ## License
 
 * Suitest is licensed under the MIT (MIT_LICENSE.txt) license
