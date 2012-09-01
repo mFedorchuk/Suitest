@@ -348,10 +348,10 @@ The internal comparison abstract operation SameValue(x, y), where x and y are EC
 
 
 ```javascript
-unit.exec(NaN, NaN, 'eq'); // true
-unit.exec(0,   0, 'eq');   // false
-unit.exec(-0, +0, 'eq');   // false
-unit.exec('0', 0, 'eq');   // false
+unit.exec(NaN, NaN, 'eg'); // true
+unit.exec(0,   0, 'eg');   // false
+unit.exec(-0, +0, 'eg');   // false
+unit.exec('0', 0, 'eg');   // false
 ```
 
 
