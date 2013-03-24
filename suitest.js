@@ -374,8 +374,8 @@ void function(__object__, __define__)
 
 			// Display the extended statistics if the <exec> passed more than two parameters
 			if (__log__.params >= 2)
-				values = '\n' + __config__.indent + 'Actual: '     + __log__.data[0] +
-						 '\n' + __config__.indent + 'Expected:   ' + __log__.data[1];
+				values = '\n' + __config__.indent + 'Actual:   ' + __log__.data[0] +
+						 '\n' + __config__.indent + 'Expected: ' + __log__.data[1];
 
 			var status = __log__.status;
 
